@@ -75,7 +75,7 @@ function spawnPowerup() {
   const types = ["shield", "clone", "bomb"];
   let curtype = types[Math.floor(Math.random() * 3)];
   if (curtype == "bomb" && spwanrampagecount == 1) {
-    //we cant spawm it
+    //we cant
     curtype = types[Math.floor(Math.random() * 2)];
   }
   if (curtype == "bomb" && spwanrampagecount == 0) {
@@ -221,12 +221,10 @@ function activate(type) {
   }
   if (type === "bomb") {
     score += enemies.length * 10;
-    //play rampage sound
+
     var audio = new Audio("effects/rampage.mp3");
     audio.play();
     enemies.length = 0;
-
-    // and score will get updated in the main gameloop when enemies are removed
   }
   if (type == "freeze") {
     freezed = true;
@@ -329,7 +327,6 @@ function drawUI() {
   ctx.fillStyle = "white";
   ctx.fillText("High Score: " + localStorage.getItem("highscore"), 20, 700);
 
-  //copyright button at bottom right
   ctx.fillStyle = "gray";
   ctx.font = "14px BlockCraft";
   ctx.fillText("© bitto saha", canvas.width - 120, canvas.height - 20);
@@ -424,13 +421,10 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-//onclick start game remove modal and start the game
 document.getElementById("startButton").addEventListener("click", () => {
-  let user_threshold = parseInt(
-    document.getElementById("thresholdInput").value
-  );
-  if (user_threshold && user_threshold >= 50 && user_threshold <= 500) {
-    threshold = user_threshold;
+  let ut = parseInt(document.getElementById("thresholdInput").value);
+  if (ut && ut >= 50 && ut <= 500) {
+    threshold = ut;
   }
   const modal = document.querySelector(".modal");
   modal.style.display = "none";
