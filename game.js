@@ -421,6 +421,12 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+function disableContextMenu() {
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+}
+
 document.getElementById("startButton").addEventListener("click", () => {
   let ut = parseInt(document.getElementById("thresholdInput").value);
   if (ut && ut >= 50 && ut <= 500) {
@@ -428,7 +434,7 @@ document.getElementById("startButton").addEventListener("click", () => {
   }
   const modal = document.querySelector(".modal");
   modal.style.display = "none";
-
+  disableContextMenu();
   resize();
   startBGM();
   setInterval(spawnEnemy, 1000);
