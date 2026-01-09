@@ -55,7 +55,7 @@ function resize() {
 }
 function startBGM() {
   bgm = new Audio("effects/bgm.mp3");
-  bgm.gameloop = true;
+  bgm.loop = true;
   bgm.volume = 0.3;
   bgm.play().catch(() => {
     addEventListener("keydown", () => bgm.play());
@@ -441,3 +441,4 @@ document.getElementById("startButton").addEventListener("click", () => {
   setInterval(spawnPowerup, 6000);
   requestAnimationFrame(gameloop);
 });
+
